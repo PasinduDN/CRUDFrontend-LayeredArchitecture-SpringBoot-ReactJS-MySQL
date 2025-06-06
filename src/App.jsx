@@ -4,12 +4,19 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/GridLegacy';
 import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+
 import './App.css'
 import { useForm } from 'react-hook-form';
 
 function App() {
   const [count, setCount] = useState(0)
-  const {handleSubmit, register} = useForm()
+  const { handleSubmit, register, formState: { errors } } = useForm()
+
+  const submit = (data) => {
+    console.log(data);
+
+  }
 
   return (
     <>
@@ -36,17 +43,22 @@ function App() {
                   label="First Name"
                   variant="outlined"
                   fullWidth
-                  {...register("fName")}
+                  {...register("fName", { required: 'First Name is required' })}
                   sx={{
-                    '& .MuiInputBase-input': { color: 'white' }, 
-                    '& .MuiInputLabel-root': { color: 'white' }, 
+                    '& .MuiInputBase-input': { color: 'white' },
+                    '& .MuiInputLabel-root': { color: 'white' },
                     '& .MuiOutlinedInput-root': {
-                      '& fieldset': { borderColor: 'white' }, 
+                      '& fieldset': { borderColor: 'white' },
                       '&:hover fieldset': { borderColor: 'white' },
-                      '&.Mui-focused fieldset': { borderColor: 'white' }, 
+                      '&.Mui-focused fieldset': { borderColor: 'white' },
                     },
                   }}
                 />
+                {errors.fName && (
+                  <Typography color="error" variant="caption" sx={{ color: 'red' }}>
+                    {errors.fName.message}
+                  </Typography>
+                )}
               </Box>
             </Grid>
             <Grid item xs={12} sm={12} md={4} sx={{ p: { xs: 1, sm: 2 } }}>
@@ -61,17 +73,22 @@ function App() {
                   label="Last Name"
                   variant="outlined"
                   fullWidth
-                  {...register("lName")}
+                  {...register("lName", { required: 'Last Name is required' })}
                   sx={{
-                    '& .MuiInputBase-input': { color: 'white' }, 
-                    '& .MuiInputLabel-root': { color: 'white' }, 
+                    '& .MuiInputBase-input': { color: 'white' },
+                    '& .MuiInputLabel-root': { color: 'white' },
                     '& .MuiOutlinedInput-root': {
-                      '& fieldset': { borderColor: 'white' }, 
-                      '&:hover fieldset': { borderColor: 'white' }, 
-                      '&.Mui-focused fieldset': { borderColor: 'white' }, 
+                      '& fieldset': { borderColor: 'white' },
+                      '&:hover fieldset': { borderColor: 'white' },
+                      '&.Mui-focused fieldset': { borderColor: 'white' },
                     },
                   }}
                 />
+                {errors.lName && (
+                  <Typography color="error" variant="caption" sx={{ color: 'red' }}>
+                    {errors.lName.message}
+                  </Typography>
+                )}
               </Box>
             </Grid>
             <Grid item xs={12} sm={12} md={4} sx={{ p: { xs: 1, sm: 2 } }}>
@@ -86,17 +103,21 @@ function App() {
                   label="Address"
                   variant="outlined"
                   fullWidth
-                  {...register("address")}
+                  {...register("address", { required: 'Address is required' })}
                   sx={{
-                    '& .MuiInputBase-input': { color: 'white' }, 
-                    '& .MuiInputLabel-root': { color: 'white' }, 
+                    '& .MuiInputBase-input': { color: 'white' },
+                    '& .MuiInputLabel-root': { color: 'white' },
                     '& .MuiOutlinedInput-root': {
-                      '& fieldset': { borderColor: 'white' }, 
-                      '&:hover fieldset': { borderColor: 'white' }, 
-                      '&.Mui-focused fieldset': { borderColor: 'white' }, 
+                      '& fieldset': { borderColor: 'white' },
+                      '&:hover fieldset': { borderColor: 'white' },
+                      '&.Mui-focused fieldset': { borderColor: 'white' },
                     },
                   }}
-                />
+                />{errors.address && (
+                  <Typography color="error" variant="caption" sx={{ color: 'red' }}>
+                    {errors.address.message}
+                  </Typography>
+                )}
               </Box>
             </Grid>
             <Grid item xs={12} sm={12} md={4} sx={{ p: { xs: 1, sm: 2 } }}>
@@ -111,17 +132,21 @@ function App() {
                   label="City"
                   variant="outlined"
                   fullWidth
-                  {...register("city")}
+                  {...register("city", { required: 'City is required' })}
                   sx={{
-                    '& .MuiInputBase-input': { color: 'white' }, 
-                    '& .MuiInputLabel-root': { color: 'white' }, 
+                    '& .MuiInputBase-input': { color: 'white' },
+                    '& .MuiInputLabel-root': { color: 'white' },
                     '& .MuiOutlinedInput-root': {
-                      '& fieldset': { borderColor: 'white' }, 
-                      '&:hover fieldset': { borderColor: 'white' }, 
-                      '&.Mui-focused fieldset': { borderColor: 'white' }, 
+                      '& fieldset': { borderColor: 'white' },
+                      '&:hover fieldset': { borderColor: 'white' },
+                      '&.Mui-focused fieldset': { borderColor: 'white' },
                     },
                   }}
-                />
+                />{errors.city && (
+                  <Typography color="error" variant="caption" sx={{ color: 'red' }}>
+                    {errors.city.message}
+                  </Typography>
+                )}
               </Box>
             </Grid>
             <Grid item xs={12} sm={12} md={4} sx={{ p: { xs: 1, sm: 2 } }}>
@@ -136,17 +161,21 @@ function App() {
                   label="Country"
                   variant="outlined"
                   fullWidth
-                  {...register("country")}
+                  {...register("country", { required: 'Country is required' })}
                   sx={{
-                    '& .MuiInputBase-input': { color: 'white' }, 
-                    '& .MuiInputLabel-root': { color: 'white' }, 
+                    '& .MuiInputBase-input': { color: 'white' },
+                    '& .MuiInputLabel-root': { color: 'white' },
                     '& .MuiOutlinedInput-root': {
-                      '& fieldset': { borderColor: 'white' }, 
-                      '&:hover fieldset': { borderColor: 'white' }, 
-                      '&.Mui-focused fieldset': { borderColor: 'white' }, 
+                      '& fieldset': { borderColor: 'white' },
+                      '&:hover fieldset': { borderColor: 'white' },
+                      '&.Mui-focused fieldset': { borderColor: 'white' },
                     },
                   }}
-                />
+                />{errors.country && (
+                  <Typography color="error" variant="caption" sx={{ color: 'red' }}>
+                    {errors.country.message}
+                  </Typography>
+                )}
               </Box>
             </Grid>
             <Grid item xs={12} sm={12} md={4} sx={{ p: { xs: 1, sm: 2 } }}>
@@ -161,17 +190,21 @@ function App() {
                   label="Province"
                   variant="outlined"
                   fullWidth
-                  {...register("province")}
+                  {...register("province", { required: 'Province is required' })}
                   sx={{
-                    '& .MuiInputBase-input': { color: 'white' }, 
-                    '& .MuiInputLabel-root': { color: 'white' }, 
+                    '& .MuiInputBase-input': { color: 'white' },
+                    '& .MuiInputLabel-root': { color: 'white' },
                     '& .MuiOutlinedInput-root': {
-                      '& fieldset': { borderColor: 'white' }, 
-                      '&:hover fieldset': { borderColor: 'white' }, 
-                      '&.Mui-focused fieldset': { borderColor: 'white' }, 
+                      '& fieldset': { borderColor: 'white' },
+                      '&:hover fieldset': { borderColor: 'white' },
+                      '&.Mui-focused fieldset': { borderColor: 'white' },
                     },
                   }}
-                />
+                />{errors.province && (
+                  <Typography color="error" variant="caption" sx={{ color: 'red' }}>
+                    {errors.province.message}
+                  </Typography>
+                )}
               </Box>
             </Grid>
             <Grid item xs={12} sm={12} md={4} sx={{ p: { xs: 1, sm: 2 } }}>
@@ -186,17 +219,51 @@ function App() {
                   label="ZIP Code"
                   variant="outlined"
                   fullWidth
-                  {...register("zipCode")}
+                  {...register("zipCode", { required: 'ZIP Code is required' })}
                   sx={{
-                    '& .MuiInputBase-input': { color: 'white' }, 
-                    '& .MuiInputLabel-root': { color: 'white' }, 
+                    '& .MuiInputBase-input': { color: 'white' },
+                    '& .MuiInputLabel-root': { color: 'white' },
                     '& .MuiOutlinedInput-root': {
-                      '& fieldset': { borderColor: 'white' }, 
-                      '&:hover fieldset': { borderColor: 'white' }, 
-                      '&.Mui-focused fieldset': { borderColor: 'white' }, 
+                      '& fieldset': { borderColor: 'white' },
+                      '&:hover fieldset': { borderColor: 'white' },
+                      '&.Mui-focused fieldset': { borderColor: 'white' },
                     },
                   }}
-                />
+                />{errors.zipCode && (
+                  <Typography color="error" variant="caption" sx={{ color: 'red' }}>
+                    {errors.zipCode.message}
+                  </Typography>
+                )}
+              </Box>
+            </Grid>
+            <Grid item xs={12} sm={12} md={4} sx={{ p: { xs: 1, sm: 2 } }}>
+              <Box
+                component="form"
+                sx={{ '& > :not(style)': { m: 1 } }}
+                noValidate
+                autoComplete="off"
+              >
+                <TextField
+                  id="contact"
+                  label="Contact"
+                  type='number'
+                  variant="outlined"
+                  fullWidth
+                  {...register("contact", { required: 'Contact is required', pattern:/^\d{10}$/})}
+                  sx={{
+                    '& .MuiInputBase-input': { color: 'white' },
+                    '& .MuiInputLabel-root': { color: 'white' },
+                    '& .MuiOutlinedInput-root': {
+                      '& fieldset': { borderColor: 'white' },
+                      '&:hover fieldset': { borderColor: 'white' },
+                      '&.Mui-focused fieldset': { borderColor: 'white' },
+                    },
+                  }}
+                />{errors.contact && (
+                  <Typography color="error" variant="caption" sx={{ color: 'red' }}>
+                    {errors.contact.message}
+                  </Typography>
+                )}
               </Box>
             </Grid>
             <Grid item xs={12} sm={12} md={4} sx={{ p: { xs: 1, sm: 2 } }}>
@@ -211,21 +278,30 @@ function App() {
                   label="Email"
                   variant="outlined"
                   fullWidth
-                  {...register("email")}
+                  {...register("email", { required: 'Email is required' })}
                   sx={{
-                    '& .MuiInputBase-input': { color: 'white' }, 
-                    '& .MuiInputLabel-root': { color: 'white' }, 
+                    '& .MuiInputBase-input': { color: 'white' },
+                    '& .MuiInputLabel-root': { color: 'white' },
                     '& .MuiOutlinedInput-root': {
-                      '& fieldset': { borderColor: 'white' }, 
-                      '&:hover fieldset': { borderColor: 'white' }, 
-                      '&.Mui-focused fieldset': { borderColor: 'white' }, 
+                      '& fieldset': { borderColor: 'white' },
+                      '&:hover fieldset': { borderColor: 'white' },
+                      '&.Mui-focused fieldset': { borderColor: 'white' },
                     },
                   }}
-                />
+                />{errors.email && (
+                  <Typography color="error" variant="caption" sx={{ color: 'red' }}>
+                    {errors.email.message}
+                  </Typography>
+                )}
               </Box>
             </Grid>
           </Grid>
         </Box>
+
+        <Box sx={{ width: '100%', textAlign: 'right', display: 'flex-end' }}>
+          <Button onClick={handleSubmit(submit)} variant="contained">Save</Button>
+        </Box>
+
       </Container>
     </>
   )
